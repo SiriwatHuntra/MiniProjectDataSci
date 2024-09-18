@@ -32,23 +32,25 @@ def replace_values(row, header):
     return [mapping[header[i]].get(val, val) for i, val in enumerate(row)]
 
 # Open the CSV file for reading and writing
-input_file = 'mushrooms.csv'  # Replace with your actual CSV file name
-output_file = 'mushrooms_full_text.csv'
+#input_file = 'mushrooms.csv'  # Replace with your actual CSV file name
+#output_file = 'mushrooms_full_text.csv'
 
-# Read input CSV and write the transformed output
-with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outfile:
-    reader = csv.reader(infile)
-    writer = csv.writer(outfile)
+def FileTransform(input, output):
+    # Read input CSV and write the transformed output
+    with open(input, 'r') as infile, open(output, 'w', newline='') as outfile:
+        reader = csv.reader(infile)
+        writer = csv.writer(outfile)
 
-    # Get header
-    header = next(reader)
+        # Get header
+        header = next(reader)
 
-    # Write the same header to the output
-    writer.writerow(header)
+        # Write the same header to the output
+        writer.writerow(header)
 
-    # Process and write each row
-    for row in reader:
-        new_row = replace_values(row, header)
-        writer.writerow(new_row)
+        # Process and write each row
+        for row in reader:
+            new_row = replace_values(row, header)
+            writer.writerow(new_row)
 
-print("CSV conversion complete. The new file is saved as 'mushrooms_full_text.csv'.")
+    print("CSV conversion complete. The new file is saved as 'mushrooms_full_text.csv'.")
+#FileTransform(input_file, output_file)
