@@ -24,7 +24,7 @@ We're using the Mushroom Classification dataset from the UCI Machine Learning Re
 - Each species is identified as definitely edible, definitely poisonous, or of unknown edibility and not recommended.
 - The dataset contains 8124 instances with 22 attributes (excluding the class attribute).
 
-### Key Attributes:
+### Key Attributes(in source):
 
 1. Cap shape
 2. Cap surface
