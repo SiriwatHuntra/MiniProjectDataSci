@@ -67,7 +67,39 @@ st.markdown("""
     h1 {
         text-align: center;
     }
-    
+    .stRadio > div {
+        background-color: #f0f2f6;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .stRadio > div > label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin: 0;
+        padding: 5px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+    .stRadio > div > label:hover {
+        background-color: #e0e2e6;
+    }
+    .stRadio > div > label > div:first-child {
+        margin-right: 10px;
+    }
+    .row-widget.stRadio {
+        padding: 10px;
+    }
+    .st-columns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .st-columns > div {
+        flex: 1;
+        padding: 10px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -86,7 +118,7 @@ if page == "Mushroom Edibility Prediction":
         "Gill Spacing": {"Close": 0, "Crowded": 1},
         "Bruises": {"Bruises": 0, "No": 1},
         "Stalk Surface Above Ring": {"Fibrous": 0, "Scaly": 1, "Silky": 2, "Smooth": 3},
-        "Stalk Surface Below Ring": {"Fibrous": 0, "Scaly": 1, "Silky": 2, "Smooth": 3},
+        "Stalk Color Above Ring": {"Brown": 0, "Buff": 1, "Cinnamon": 2, "Gray": 3, "Orange": 4, "Pink": 5, "Red": 6, "White": 7, "Yellow": 8},
         "Stalk Color Below Ring": {"Brown": 0, "Buff": 1, "Cinnamon": 2, "Gray": 3, "Orange": 4, "Pink": 5, "Red": 6, "White": 7, "Yellow": 8},
         "Ring Type": {"Evanescent": 0, "Flaring": 1, "Large": 2, "None": 3, "Pendant": 4},
         "Spore Print Color": {"Black": 0, "Brown": 1, "Buff": 2, "Chocolate": 3, "Green": 4, "Orange": 5, "Purple": 6, "White": 7, "Yellow": 8},
@@ -110,19 +142,19 @@ if page == "Mushroom Edibility Prediction":
         gill_spacing = st.radio("", list(options["Gill Spacing"].keys()), key="Gill Spacing", label_visibility="collapsed")
 
     with col2:
-        st.subheader("Bruises")
-        bruises = st.radio("", list(options["Bruises"].keys()), key="Bruises", label_visibility="collapsed")
-
         st.subheader("Stalk Surface Above Ring")
         stalk_surface_above_ring = st.radio("", list(options["Stalk Surface Above Ring"].keys()), key="Stalk Surface Above Ring", label_visibility="collapsed")
 
-        st.subheader("Stalk Surface Below Ring")
-        stalk_surface_below_ring = st.radio("", list(options["Stalk Surface Below Ring"].keys()), key="Stalk Surface Below Ring", label_visibility="collapsed")
+        st.subheader("Stalk Color Above Ring")
+        stalk_color_above_ring = st.radio("", list(options["Stalk Color Above Ring"].keys()), key="Stalk Color Above Ring", label_visibility="collapsed")
 
         st.subheader("Stalk Color Below Ring")
         stalk_color_below_ring = st.radio("", list(options["Stalk Color Below Ring"].keys()), key="Stalk Color Below Ring", label_visibility="collapsed")
 
     with col3:
+        st.subheader("Bruises")
+        bruises = st.radio("", list(options["Bruises"].keys()), key="Bruises", label_visibility="collapsed")
+
         st.subheader("Ring Type")
         ring_type = st.radio("", list(options["Ring Type"].keys()), key="Ring Type", label_visibility="collapsed")
 
@@ -139,7 +171,7 @@ if page == "Mushroom Edibility Prediction":
     gill_spacing_value = options["Gill Spacing"][gill_spacing]
     bruises_value = options["Bruises"][bruises]
     stalk_surface_above_ring_value = options["Stalk Surface Above Ring"][stalk_surface_above_ring]
-    stalk_surface_below_ring_value = options["Stalk Surface Below Ring"][stalk_surface_below_ring]
+    stalk_color_above_ring_value = options["Stalk Color Above Ring"][stalk_color_above_ring]
     stalk_color_below_ring_value = options["Stalk Color Below Ring"][stalk_color_below_ring]
     ring_type_value = options["Ring Type"][ring_type]
     spore_print_color_value = options["Spore Print Color"][spore_print_color]
@@ -149,7 +181,7 @@ if page == "Mushroom Edibility Prediction":
     result = ""
     if st.button("Predict", use_container_width=True):
         result = predict_mushroom(cap_shape_value, bruises_value, gill_spacing_value, gill_size_value,
-                                  gill_color_value, stalk_surface_above_ring_value, stalk_surface_below_ring_value,
+                                  gill_color_value, stalk_surface_above_ring_value, stalk_color_above_ring_value,
                                   stalk_color_below_ring_value, ring_type_value, spore_print_color_value, population_value)
 
     if result:
