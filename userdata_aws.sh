@@ -20,4 +20,5 @@ source myenv/bin/activate
 pip install -r requirements.txt
 
 # Optionally, run a script like `streamlit` or another task
-streamlit run Streamlit.py
+streamlit run Streamlit.py & python3 Gradio.py
+
