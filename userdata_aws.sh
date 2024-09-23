@@ -1,4 +1,5 @@
 #!/bin/bash
+# chmod +x script.sh
 # Update the package list
 sudo apt update
 
