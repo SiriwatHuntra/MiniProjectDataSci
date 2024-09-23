@@ -50,7 +50,7 @@ custom_css = """
 
 # Create Gradio Interface with custom CSS for radio button styling
 with gr.Blocks(css=custom_css) as demo:
-    gr.Markdown("<div class='title'>Mushroom Edibility Prediction</div>", elem_classes="title")
+    gr.Markdown("<div class='title'>🍄Mushroom Edibility Prediction🍄</div>", elem_classes="title")
     # Output section at the top using Markdown
     output = gr.Markdown(value="", elem_id="output_markdown", elem_classes="centered-output")
 

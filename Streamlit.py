@@ -108,7 +108,7 @@ st.sidebar.title("🍄 Mushroom Classification Project")
 page = st.sidebar.radio("Go to Pages", ["Mushroom Edibility Prediction", "About Us"])
 
 if page == "Mushroom Edibility Prediction":
-    st.title("Mushroom Edibility Prediction")
+    st.title("🍄Mushroom Edibility Prediction🍄")
 
     # Define the options for the inputs
     options = {
