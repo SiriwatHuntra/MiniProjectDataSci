@@ -1,5 +1,5 @@
 #!/bin/bash
-# chmod +x script.sh
+# chmod +x userdata_aws.sh
 # Update the package list
 sudo apt update
 
